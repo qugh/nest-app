@@ -1,13 +1,11 @@
 import { forwardRef, Module } from '@nestjs/common';
+import { SequelizeModule } from '@nestjs/sequelize';
 import { UsersController } from './users.controller';
 import { UsersService } from './users.service';
-import { SequelizeModule } from '@nestjs/sequelize';
 import { User } from './users.model';
-import { UserRoles } from 'roles/user-roles.model';
-import { Role } from 'roles/roles.model';
-import { RolesModule } from '../roles/roles.module';
-import { AuthModule } from '../auth/auth.module';
-import { Post } from '../posts/posts.model';
+import { Role, UserRoles, RolesModule } from 'roles';
+import { AuthModule } from 'auth';
+import { Post } from 'posts';
 
 @Module({
   controllers: [UsersController],
@@ -15,7 +13,6 @@ import { Post } from '../posts/posts.model';
   imports: [
     SequelizeModule.forFeature([User, Role, UserRoles, Post]),
     RolesModule,
-    // Можно убрать forwardRef
     forwardRef(() => AuthModule),
   ],
   exports: [UsersService],

@@ -6,17 +6,18 @@ import {
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { PostsService } from './posts.service';
 import { CreatePostDto } from './dto/create-post.dto';
-import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { Post as PostModel } from './posts.model';
-import { FileInterceptor } from '@nestjs/platform-express';
 
+@ApiTags('Посты')
 @Controller('posts')
 export class PostsController {
   constructor(private postService: PostsService) {}
 
-  @ApiOperation({ summary: 'Создание новой роли' })
+  @ApiOperation({ summary: 'Добавление поста' })
   @ApiResponse({ status: HttpStatus.OK, type: PostModel })
   @Post()
   @UseInterceptors(FileInterceptor('image'))

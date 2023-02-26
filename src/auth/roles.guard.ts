@@ -10,8 +10,8 @@ import { Observable } from 'rxjs';
 import { JwtService } from '@nestjs/jwt';
 import { Reflector } from '@nestjs/core';
 import { ROLES_KEY } from './roles-auth.decorator';
-import { Role } from '../roles/roles.model';
-import { User } from '../users';
+import { Role } from 'roles';
+import { User } from 'users';
 
 @Injectable()
 export class RolesGuard implements CanActivate {

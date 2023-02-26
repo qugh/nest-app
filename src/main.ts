@@ -13,7 +13,7 @@ async function start() {
     .addTag('v1')
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('/api/docs', app, document);
+  SwaggerModule.setup('/api/swagger', app, document);
   await app.listen(PORT, () => console.log(`Server started on port: ${PORT}`));
 }
 
