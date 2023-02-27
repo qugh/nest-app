@@ -8,7 +8,6 @@ import {
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
-import { Express } from 'express';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { PostsService } from './posts.service';
